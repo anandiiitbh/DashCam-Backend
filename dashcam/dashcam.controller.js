@@ -3,8 +3,8 @@ const router = express.Router();
 const dashcamService = require('./dashcam.service');
 
 // routes
-router.post('/', dashcam);
-router.post('/uploadVideo', uploadVideo);
+router.post('/', dashcam);      //  Login, Alarm, Location
+router.post('/uploadVideo', uploadVideo);   //  Vido Upload
 
 module.exports = router;
 
