@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "DashCam1",
+    "imei": 12345678,
+    "file": "./storage/Dashcam1.json",
+    "Locfile": "./storage/Location/LocDashcam1.json"
+  }
+]
