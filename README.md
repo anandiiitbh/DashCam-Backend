@@ -139,7 +139,9 @@ Video will be saved at backend `storage/Videos/(imei+filename).mp4` and the whol
      Connection closed
 ```
 
-used TCP Socket Programming .. Akc(https://www.hacksparrow.com/nodejs/tcp-socket-programming-in-node-js.html)
+used TCP Socket Programming .. Akc(https://www.hacksparrow.com/nodejs/tcp-socket-programming-in-node-js.html)  
+
+                       Backend                                                       DashCam
 
 ![Messages from the backend to Dashcam](https://github.com/anandiiitbh/DashCam-Backend/blob/main/storage/img/Screenshot_2021-02-21_15-22-22.png)  
 
