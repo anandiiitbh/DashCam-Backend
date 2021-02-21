@@ -1,6 +1,6 @@
 # TruckX Assignment
 
->NodeJs(ExpressJs) APIs to communicate with CAR DashCam;
+>NodeJs(ExpressJs) APIs to communicate with DashCam;
 
 >Problem Statement
  1. Dashcam sends the alarms to the backend for events like a crash, harsh brake, etc..
