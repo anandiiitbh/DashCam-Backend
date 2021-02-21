@@ -8,8 +8,9 @@
  3. Receive commands from backend for configuration
 
 ## My Reason to go with `node.js`
-- Familiar with both Django & Node.js
-- 
+- worked with Django and Node.js as well, But more familiar with Node.js.
+- Infuture can develope Cross-Platform Apps With Node.
+- Node. Js Supports Microservices.
 
 >Requirements: `node.js` recents and `npm`
 
