@@ -7,10 +7,11 @@
  2. Records short video clips for the above alerts and post it to backend
  3. Receive commands from backend for configuration
 
-## My Reason to go with `node`
+## My Reason to go with `node.js`
+- Familiar with both Django & Node.js
 - 
 
->Requirements: `node` recents and `npm`
+>Requirements: `node.js` recents and `npm`
 
 >Used `postman` And `Chrome Browser` for testing
 
