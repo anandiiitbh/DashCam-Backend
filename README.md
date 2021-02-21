@@ -1,10 +1,6 @@
 # TruckX Assignment
 
 >NodeJs(ExpressJs) APIs to communicate with DashCam;  
-    
-[![Node.js](https://img.shields.io/badge/Node.js-v12.18.3-yellow.svg)](https://nodejs.org)
-[![npm](https://img.shields.io/badge/npm-7.5.4-green.svg)](https://www.npmjs.com/)
-[![express](https://img.shields.io/badge/Express-4.17.1-yellow.svg)](https://expressjs.com/)
 
 
 >Problem Statement
@@ -16,7 +12,12 @@
 - worked with Django and Node.js as well, But more familiar with Node.js.
 - Infuture can develope Cross-Platform Apps With Node.js.
 
->Requirements: `node.js` recents and `npm`
+>Requirements: `node.js` recents and `npm`  
+
+    
+[![Node.js](https://img.shields.io/badge/Node.js-v12.18.3-yellow.svg)](https://nodejs.org)
+[![npm](https://img.shields.io/badge/npm-7.5.4-green.svg)](https://www.npmjs.com/)
+[![express](https://img.shields.io/badge/Express-4.17.1-yellow.svg)](https://expressjs.com/)
 
 >Used `postman` And `Chrome Browser` for testing
 
