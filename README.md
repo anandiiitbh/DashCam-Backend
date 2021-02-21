@@ -7,6 +7,9 @@
  2. Records short video clips for the above alerts and post it to backend
  3. Receive commands from backend for configuration
 
+## My Reason to go with `node`
+- 
+
 >Requirements: `node` recents and `npm`
 
 >Used `postman` And `Chrome Browser` for testing
