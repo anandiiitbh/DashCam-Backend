@@ -9,8 +9,7 @@
 
 ## My Reason to go with `node.js`
 - worked with Django and Node.js as well, But more familiar with Node.js.
-- Infuture can develope Cross-Platform Apps With Node.
-- Node. Js Supports Microservices.
+- Infuture can develope Cross-Platform Apps With Node.js.
 
 >Requirements: `node.js` recents and `npm`
 
