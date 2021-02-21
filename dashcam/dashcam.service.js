@@ -11,27 +11,31 @@ module.exports = {
     uploadVideo
 };
 
+//LOGIN Function 
 async function login(imei, res) {
+    //Checking Dashcam is priviously Saved or not
     let DashcamsArr = JSON.parse(fs.readFileSync(dirPath + 'dashcam.json'));
     var DashCam = DashcamsArr.find(c => c.imei === imei);
     // create a jwt token that is valid for 7 days
     const token = jwt.sign({ imei: imei }, config.secret, { expiresIn: '7d' });
-    if (!DashCam) {
+    if (!DashCam) {     //New DashCam(IMEI)
         let t_data = { "id": DashcamsArr.length + 1, "name": "DashCam" + (DashcamsArr.length + 1), "imei": imei, "file": dirPath + "Dashcam" + (DashcamsArr.length + 1) + ".json", "Locfile": dirPath + "Location/LocDashcam" + (DashcamsArr.length + 1) + ".json" };
         DashcamsArr.push(t_data);
-        fs.writeFileSync(dirPath + 'dashcam.json', JSON.stringify(DashcamsArr, null, 2));
-        fs.appendFile(t_data.file, '[]', function(err) {
+        fs.writeFileSync(dirPath + 'dashcam.json', JSON.stringify(DashcamsArr, null, 2)); //Writing New DashCam to DashCam List
+        fs.appendFile(t_data.file, '[]', function(err) {    //Creating Particular DashCam's File(JSON) for Alarm Recods 
             if (err) throw err;
         });
-        fs.appendFile(t_data.Locfile, '[]', function(err) {
+        fs.appendFile(t_data.Locfile, '[]', function(err) {     //Creating Particular DashCam's File(JSON) for Location Recods 
             if (err) throw err;
         });
         res.status(200).send({ "DashCam Details": t_data, token });
     } else res.status(200).send({ DashCam, token });
 }
 
-async function alarm(req, res) {
 
+//Alarm API calls Handling Function
+async function alarm(req, res) {
+    //These Alarm Types are valid only
     const alarm_type = ["VIBRATION", "OVERSPEED", "CRASH", "HARD_ACCELERATION", "HARD_BRAKE", "SHARP_TURN"];
 
     const token = verifyToken(req);
