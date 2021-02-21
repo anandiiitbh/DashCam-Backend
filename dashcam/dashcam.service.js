@@ -38,13 +38,13 @@ async function alarm(req, res) {
     //These Alarm Types are valid only
     const alarm_type = ["VIBRATION", "OVERSPEED", "CRASH", "HARD_ACCELERATION", "HARD_BRAKE", "SHARP_TURN"];
 
-    const token = verifyToken(req);
+    const token = verifyToken(req); //Token Verifying
     if (token) {
-        jwt.verify(token, config.secret, (err, authData) => {
+        jwt.verify(token, config.secret, (err, authData) => {   //Extracting IMEI from token
             if (err) {
                 res.sendStatus(403).send({ "error": "Invalid Token" });
             } else {
-                var Alarm = alarm_type.find(c => c === req.body.alarm_type);
+                var Alarm = alarm_type.find(c => c === req.body.alarm_type);    //Verifying Alarm type
                 if (Alarm) {
                     const imei = authData.imei;
                     let DashcamsArr = JSON.parse(fs.readFileSync(dirPath + 'dashcam.json'));
@@ -52,7 +52,7 @@ async function alarm(req, res) {
                     if (DashCam) {
                         let prevData = JSON.parse(fs.readFileSync(DashCam.file));
                         prevData.push(req.body);
-                        fs.writeFileSync(DashCam.file, JSON.stringify(prevData, null, 2));
+                        fs.writeFileSync(DashCam.file, JSON.stringify(prevData, null, 2));  //Writing Alarm to particular DashCam's History
                         res.status(200).send(req.body);
                     } else res.status(404).send("DashCam Not Found");
                 } else res.status(404).send("Alarm Type Not Found");
@@ -64,11 +64,12 @@ async function alarm(req, res) {
 }
 
 
+//Location API Handling Function
 async function location(req, res) {
 
-    const token = verifyToken(req);
+    const token = verifyToken(req); //Token Verify
     if (token) {
-        jwt.verify(token, config.secret, (err, authData) => {
+        jwt.verify(token, config.secret, (err, authData) => {   //Extracting IMEI from token
             if (err) {
                 res.sendStatus(403).send({ "error": "Invalid Token" });
             } else {
@@ -76,9 +77,9 @@ async function location(req, res) {
                 let DashcamsArr = JSON.parse(fs.readFileSync(dirPath + 'dashcam.json'));
                 var DashCam = DashcamsArr.find(c => c.imei === imei);
                 if (DashCam) {
-                    let prevData = JSON.parse(fs.readFileSync(DashCam.Locfile));
+                    let prevData = JSON.parse(fs.readFileSync(DashCam.Locfile));    //Fetching Previous Location History of DashCam
                     prevData.push(req.body);
-                    fs.writeFileSync(DashCam.Locfile, JSON.stringify(prevData, null, 2));
+                    fs.writeFileSync(DashCam.Locfile, JSON.stringify(prevData, null, 2));   //Writing Location of Particular DashCam to it's Location History
                     res.status(200).send(req.body);
                 } else res.status(404).send("DashCam Not Found");
             }
@@ -88,19 +89,19 @@ async function location(req, res) {
     }
 }
 
-
+//Function For Video Uploading
 function uploadVideo(req, res) {
 
     let DashcamsArr = JSON.parse(fs.readFileSync(dirPath + 'dashcam.json'));
     var DashCam = DashcamsArr.find(c => c.imei === req.body.imei);
-    if (DashCam) {
+    if (DashCam) {      //Verifying IMEI is previously registered or not
 
         let VideoList = JSON.parse(fs.readFileSync(dirPath + 'Videos/video.json'));
         let filename = req.body.imei + req.body.filename;
         VideoList.push({ DashCam, filename });
-        fs.writeFileSync(dirPath + 'Videos/video.json', JSON.stringify(VideoList, null, 2));
+        fs.writeFileSync(dirPath + 'Videos/video.json', JSON.stringify(VideoList, null, 2));    //Writing Video Details
 
-        the_file.mv(dirPath + 'Videos/' + filename, function(err) {
+        the_file.mv(dirPath + 'Videos/' + filename, function(err) {     //Saving Video to storage
 
             res.writeHead(200, { "Content-Type": "video/mp4" });
             if (err) {
@@ -108,7 +109,7 @@ function uploadVideo(req, res) {
                 res.write(err);
                 res.end();
             } else {
-                res.write("upload of file " + req.body.filename + " complete");
+                res.write("upload of file " + req.body.filename + " complete"); //sending video upload response
                 res.end();
             }
 
